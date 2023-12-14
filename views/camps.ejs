@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boiler</title>
+    <link rel="stylesheet" href="stylesheets/camps.css">
+    <script src="https://kit.fontawesome.com/9189716859.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <section class="first">
+        <nav>
+            <h1><a href="#">YelpCamps</a></h1>
+            <ul>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/camps" class="selected">Campgrounds</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <ul class="special">
+                <li><i class="fa-regular fa-user"></i><a href="#">Login</a></li>
+            </ul>
+        </nav>
+    
+        <main>
+            <ul>
+                <div class="util">
+                    <div class="left">
+                        <div class="left-search">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" placeholder="Search Here">
+                            <a href="#">Search</a>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <a href="/camps/new">Create Camps</a>
+                    </div>
+                </div>
+                <% for(let camp of camps){ %>
+                    <li>
+                        <div class="content">
+                            <div class="left">
+                                <img src="<%= camp.image %>" alt="<%= camp.title %>" srcset="">
+                            </div>
+                            <div class="right">
+                                <h1 class="content-title"><%= camp.title %></h1>
+                                <p class="content-para"><%= camp.location %></p>
+                                <a href="/camps/<%= camp._id %>">Let's Go!</a>
+                            </div>
+                        </div>
+                    </li>
+                <% } %>
+            </ul>
+        </main>
+    
+        <footer>
+            <p>&copy;2023 YelpCamps</p>
+        </footer>
+    </section>
+</body>
+</html>

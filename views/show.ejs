@@ -1,0 +1,86 @@
+<link rel="stylesheet" href="stylesheets/home.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boiler</title>
+    <link rel="stylesheet" href="/stylesheets/show.css">
+    <script src="https://kit.fontawesome.com/9189716859.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<section class="first">
+    <nav>
+        <h1><a href="#">YelpCamps</a></h1>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/camps">Campgrounds</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <ul class="special">
+            <li><i class="fa-regular fa-user"></i><a href="#">Login</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="left">
+            <img src="/<%= camp.image %>" alt="<%= camp.title %>">
+            <div class="left-content">
+                <h1><%= camp.title %></h1>
+                <p class="desc"><i class="fa-solid fa-circle-info"></i><%= camp.description %></p>
+                <p class="desc"><i class="fa-solid fa-location-dot"></i><%= camp.location %></p>
+                <p class="desc"><i class="fa-solid fa-hand-holding-dollar"></i>$<%= camp.price %>/night</p>
+                
+                <ul>
+                    <li><a href="/camps">Back</a></li>
+                    <li>
+                        <form action="/camps/<%= camp._id %>?_method=DELETE" method="POST">
+                            <button>Delete</button>
+                        </form>
+                    </li>
+                    <li><a href="/camps/<%= camp._id %>/edit">Edit</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="right">
+            <form action="/camps/<%= camp._id %>/reviews" method="post" class="form-fill">
+                <h3>Leave a Review</h3>
+                <fieldset class="starability-basic">
+                    <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
+                    <input type="radio" id="first-rate1" name="rating" value="1" />
+                    <label for="first-rate1" title="Terrible">1 star</label>
+                    <input type="radio" id="first-rate2" name="rating" value="2" />
+                    <label for="first-rate2" title="Not good">2 stars</label>
+                    <input type="radio" id="first-rate3" name="rating" value="3" />
+                    <label for="first-rate3" title="Average">3 stars</label>
+                    <input type="radio" id="first-rate4" name="rating" value="4" />
+                    <label for="first-rate4" title="Very good">4 stars</label>
+                    <input type="radio" id="first-rate5" name="rating" value="5" />
+                    <label for="first-rate5" title="Amazing">5 stars</label>
+                  </fieldset>
+                <textarea name="body" id="body" cols="50" rows="10"></textarea>
+                <button>Submit</button>
+            </form>
+            
+            <div class="cont-rev">
+                <h3 class="reviews">Reviews</h3>
+                <% for(let review of camp.reviews){ %>
+                    <div class="review-body">
+                        <p class="starability-result" data-rating="<%= review.rating %>">
+                            Rated: 3 stars
+                        </p>
+                        <p><%= review.body %></p>
+                        <form action="/camps/<%= camp._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
+                            <button>Delete</button>
+                        </form>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy;2023 YelpCamps</p>
+    </footer>
+</section>
+</body>
+</html>

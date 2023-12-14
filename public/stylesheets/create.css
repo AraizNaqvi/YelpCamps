@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,400&display=swap');
+
+*{
+    padding: none;
+    margin: none;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+*::selection{
+    background-color: white;
+    color: black;
+}
+body{
+    padding: 0;
+    margin: 0;
+}
+
+.first{
+    min-height: 100vh;
+    width: 100%;
+    background-image: url(../images/create.jpg);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.first nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 50px;
+    z-index: 3;
+}
+.first nav h1 a{
+    color: white;
+    font-size: 1.8rem;
+}
+.first nav ul{
+    display: flex;
+    align-items: center;
+}
+.first nav ul li .selected{
+    margin-left: 25px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: white;
+    position: relative;
+}
+.first nav ul li .selected::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0%;
+    height: 3px;
+    background-color: white;
+    transition: 0.5s;
+}
+.first nav ul li .selected:hover:after{
+    width: 100%;
+}
+.first nav ul li a{
+    margin-left: 25px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: black;
+    position: relative;
+}
+.first nav ul li a::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0%;
+    height: 3px;
+    background-color: black;
+    transition: 0.5s;
+}
+.first nav ul li a:hover:after{
+    width: 100%;
+}
+.first nav .special li i{
+    color: white;
+}
+.first nav .special li a{
+    margin-left: 5px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: white;
+    transition: 0.5s;
+}
+.first nav .special li a::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0%;
+    height: 3px;
+    background-color: white;
+    transition: 0.5s;
+}
+.first nav .special li a:hover:after{
+    width: 100%;
+}
+
+.first main{
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+}
+.first main .left{
+    flex: 1;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.first main .left .topic{
+    display: flex;
+    margin-bottom: auto;
+    color: white;
+    font-size: 3rem;
+    position: relative;
+    left: 300px;
+    top: 100px;
+}
+.first main .left .left-content{
+    margin-top: auto;
+    padding: 100px 50px;
+    width: 100%;
+    line-height: 10px;
+}
+.first main .left .left-content h1{
+    font-family: 'Ephesis', cursive;
+    color: white;
+    font-size: 3rem;
+}
+.first main .left .left-content .left-para{
+    color: rgba(255, 255, 255, 0.757);
+    font-size: 1.2rem;
+}
+.first main .left .left-content ul{
+    display: flex;
+    align-items: center;
+    position: relative;
+    right: 35px;
+}
+.first main .left .left-content ul li a{
+    margin-right: 20px;
+    font-size: 1.4rem;
+    color: white;
+    transition: 0.5s;
+}
+.first main .left .left-content ul li a:hover{
+    color: black;
+}
+
+.first main .right{
+    width: 40%;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    border: none;
+}
+.first main .right .right-content{
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.first main .right .right-content .right-header{
+    color: white;
+    font-size: 2rem;
+    font-weight: 500;
+}
+.first main .right .right-content .inp{
+    border-bottom: 2px solid rgb(148, 148, 148);
+    margin-bottom: 45px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    height: 35px;
+    padding: 20px 0px;
+}
+.first main .right .right-content .inp i{
+    color: white;
+    font-size: 1.3rem;
+}
+.first main .right .right-content .inp input{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    height: 35px;
+    width: 500px;
+    margin-left: 10px;
+    font-size: 1.3rem;
+    color: white;
+}
+.first main .right .right-content .inp input::placeholder{
+    font-size: 1.3rem;
+    color: white;
+}
+.first main .right .right-content .special textarea{
+    border: 2px solid rgb(148, 148, 148);
+    border-bottom-left-radius: 30px;
+    outline: none;
+    background-color: transparent;
+    position: relative;
+    right: 10px;
+    height: 170px;
+    width: 600px;
+    margin-left: 10px;
+    font-size: 1.1rem;
+    padding: 10px;
+    color: white;
+    margin-bottom: 15px;
+}
+.first main .right .right-content .special textarea::placeholder{
+    font-size: 1.3rem;
+    color: white;
+}
+.first main .right .right-content form button{
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    font-size: 1.3rem;
+    padding: 5px 30px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-right: 20px;
+    transition: 0.5s;
+}
+.first main .right .right-content form button:hover{
+    background-color: white;
+    color: black;
+}
+.first main .right .right-content form a{
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    font-size: 1.3rem;
+    padding: 5px 30px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-right: 20px;
+    transition: 0.5s;
+}
+.first main .right .right-content form a:hover{
+    background-color: white;
+    color: black;
+}
+
+.first footer{
+    width: 100%;
+    display: flex;
+    color: rgba(255, 255, 255, 0.824);
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+}
