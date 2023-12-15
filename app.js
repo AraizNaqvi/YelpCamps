@@ -9,7 +9,6 @@ let method_override = require('method-override');
 // Error Handling
 let AsyncError = require('./utils/AsyncError');
 let ExpressError = require('./utils/ExpressError');
-let Joi = require('joi');
 let {campgroundSchema} = require('./validations');
 
 let validateCamp = (req, res, next) => {
@@ -71,8 +70,9 @@ app.get('/camps/:id/edit', AsyncError(async(req, res) => {
 
 
 // Post, Put, Delete Routers
-app.post('/camps', AsyncError(async(req, res, next) => {
-    let camp = new Campground(req.body);
+app.post('/camps', validateCamp, AsyncError(async(req, res, next) => {
+    let {campground} = req.body;
+    let camp = new Campground(campground);
     await camp.save();
     res.redirect(`/camps/${camp._id}`);
 }))
@@ -87,7 +87,7 @@ app.delete('/camps/:id', AsyncError(async(req, res) => {
     await Campground.findByIdAndDelete(id);
     res.redirect('/camps');
 }))
-app.post('/camps/:id/reviews', async(req, res) => {
+app.post('/camps/:id/reviews', AsyncError(async(req, res) => {
     let {id} = req.params;
     let camp = await Campground.findById(id);
     let review = new Review(req.body);
@@ -95,13 +95,13 @@ app.post('/camps/:id/reviews', async(req, res) => {
     await review.save();
     await camp.save();
     res.redirect(`/camps/${id}`);
-})
-app.delete('/camps/:id/reviews/:reviewId', async(req, res) => {
+}))
+app.delete('/camps/:id/reviews/:reviewId', AsyncError(async(req, res) => {
     let {id, reviewId} = req.params;
     await Campground.findByIdAndUpdate(id, {$pull: {reviews: reviewId}});
     await Review.findByIdAndDelete(reviewId);
     res.redirect(`/camps/${id}`);
-})
+}))
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page Not Found', 404));
 })
@@ -109,8 +109,7 @@ app.all('*', (req, res, next) => {
 
 // Mother Error Router
 app.use((err, req, res, next) => {
-    let {statusCode = 500} = err;
-    if(!err.message) err.message = "Something went wrong!";
+    let {message = "Something went wrong!", statusCode = 400} = err;
     res.status(statusCode).render('error', {err});
 })
 
