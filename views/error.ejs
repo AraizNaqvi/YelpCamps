@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boiler</title>
+    <title>Uh-oh</title>
     <link rel="stylesheet" href="/stylesheets/error.css">
     <script src="https://kit.fontawesome.com/9189716859.js" crossorigin="anonymous"></script>
 </head>
@@ -12,16 +12,11 @@
 <body>
     <section class="first">
         <main>
-            <div class="content">
-                <div class="part">
-                    <img src="/images/404-left.png" alt="left plug">
-                </div>
-                <div class="mid">
-                    <h1><%= err.message %> - <%= err.statusCode %></h1>
+            <div class="main-content">
+                <div class="content">
+                    <h1><%= err.statusCode %></h1>
+                    <p class="para"><%= err.message %>!</p>
                     <a href="/camps">Back Home</a>
-                </div>
-                <div class="part">
-                    <img src="/images/404-right.png" alt="right plug" class="special-img">
                 </div>
             </div>
         </main>
