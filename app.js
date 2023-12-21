@@ -10,7 +10,6 @@ let method_override = require('method-override');
 let AsyncError = require('./utils/AsyncError');
 let ExpressError = require('./utils/ExpressError');
 let {campgroundSchema} = require('./validations');
-
 let validateCamp = (req, res, next) => {
     let {error} = campgroundSchema.validate(req.body);
     if(error){
@@ -24,6 +23,7 @@ let validateCamp = (req, res, next) => {
 // Database Requirements
 let mongoose = require('mongoose');
 const campground = require('./models/campground');
+let Review = require('./models/reviews');
 mongoose.connect('mongodb://127.0.0.1:27017/yelp')
     .then(() => {
         console.log("Mongoose Hit!");
@@ -33,75 +33,62 @@ mongoose.connect('mongodb://127.0.0.1:27017/yelp')
     })
 
 
-let Review = require('./models/reviews');
-
-
 // Basic Middlewares
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-// app.use(express.static('public'));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({extended:true}));
 app.use(method_override('_method'));
 
 
-// Routers
+// User Requirements
+let User = require('./models/user');
+let passport = require('passport');
+let localStratergy = require('passport-local');
+let session = require('express-session');
+let user = require('./Routes/userRoutes');
+const sessionConfig = {
+    secret: 'thisshouldbeabettersecret!',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        httpOnly: true,
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        maxAge: 1000 * 60 * 60 * 24 * 7
+    }
+}
+app.use(session(sessionConfig));
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new localStratergy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+// app.get('/fakeUser', async(req, res) => {
+//     let user = new User({email: "araiz@gmail.com", username: 'Araiz'});
+//     let newUser = await User.register(user, 'hehehe')
+//     res.send(newUser);
+// })
+
+
+
+// Route Management
+let camps = require('./Routes/campRoutes');
+let reviews = require('./Routes/reviewRoutes');
+
+app.use((req, res, next) => {
+    console.log(req.session);
+    res.locals.currentUser = req.user;
+    next();
+})
+
+app.use('/', user);
+app.use('/camps/:id/reviews', reviews);
+app.use('/camps', camps);
 app.get('/home', (req, res) => {
     res.render('home');
 })
-app.get('/camps', AsyncError(async(req, res) => {
-    let camps = await campground.find({});
-    res.render('camps', {camps});
-}))
-app.get('/camps/new', (req, res) => {
-    res.render('create');
-})
-app.get('/camps/:id', AsyncError(async(req, res) => {
-    let {id} = req.params;
-    let camp = await Campground.findById(id).populate('reviews');
-    console.log(camp);
-    res.render('show', {camp});
-}))
-app.get('/camps/:id/edit', AsyncError(async(req, res) => {
-    let {id} = req.params;
-    let camp = await Campground.findById(id);
-    res.render(`edit`, {camp});
-}))
-
-
-// Post, Put, Delete Routers
-app.post('/camps', validateCamp, AsyncError(async(req, res, next) => {
-    let {campground} = req.body;
-    let camp = new Campground(campground);
-    await camp.save();
-    res.redirect(`/camps/${camp._id}`);
-}))
-app.put('/camps/:id', validateCamp, AsyncError(async(req, res) => {
-    let {id} = req.params;
-    let {title, location} = req.body;
-    let camp = await Campground.findByIdAndUpdate(id, {title, location});
-    res.redirect(`/camps/${camp._id}`);
-}))
-app.delete('/camps/:id', AsyncError(async(req, res) => {
-    let {id} = req.params;
-    await Campground.findByIdAndDelete(id);
-    res.redirect('/camps');
-}))
-app.post('/camps/:id/reviews', AsyncError(async(req, res) => {
-    let {id} = req.params;
-    let camp = await Campground.findById(id);
-    let review = new Review(req.body);
-    camp.reviews.push(review);
-    await review.save();
-    await camp.save();
-    res.redirect(`/camps/${id}`);
-}))
-app.delete('/camps/:id/reviews/:reviewId', AsyncError(async(req, res) => {
-    let {id, reviewId} = req.params;
-    await Campground.findByIdAndUpdate(id, {$pull: {reviews: reviewId}});
-    await Review.findByIdAndDelete(reviewId);
-    res.redirect(`/camps/${id}`);
-}))
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page Not Found', 404));
 })

@@ -18,6 +18,7 @@ let seedDb  = async () => {
     for(let i=0; i<20; i++){
         let rand = Math.floor(Math.random() * 1000);
         let camp = new Campground({
+            author: '6582826a949cddc9d4696cc4',
             location: `${cities[rand].city}, ${cities[rand].state}`,
             title: `${randArray(descriptors)} ${randArray(places)}`,
             image: 'images/places.jpg',

@@ -18,26 +18,35 @@
             <li><a href="#">Contact</a></li>
         </ul>
         <ul class="special">
-            <li><i class="fa-regular fa-user"></i><a href="#">Login</a></li>
+            <% if(!currentUser){ %>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+            <% }else{ %>
+                <li><a href="#" class="special_field"><i class="fa-solid fa-user"></i><%= currentUser.username %></a></li>
+                <li><a href="/logout">Logout</a></li>
+            <% } %>
         </ul>
     </nav>
     <main>
         <div class="left">
-            <img src="/<%= camp.image %>" alt="<%= camp.title %>">
+            <img src="../<%= camp.image %>" alt="<%= camp.title %>">
             <div class="left-content">
                 <h1><%= camp.title %></h1>
                 <p class="desc"><i class="fa-solid fa-circle-info"></i><%= camp.description %></p>
                 <p class="desc"><i class="fa-solid fa-location-dot"></i><%= camp.location %></p>
+                <p class="desc"><i class="fa-solid fa-user"></i>Submitted By <%= camp.author.username %></p>
                 <p class="desc"><i class="fa-solid fa-hand-holding-dollar"></i>$<%= camp.price %>/night</p>
                 
                 <ul>
                     <li><a href="/camps">Back</a></li>
-                    <li>
-                        <form action="/camps/<%= camp._id %>?_method=DELETE" method="POST">
-                            <button>Delete</button>
-                        </form>
-                    </li>
-                    <li><a href="/camps/<%= camp._id %>/edit">Edit</a></li>
+                    <% if(currentUser && camp.author.equals(currentUser._id)){ %>
+                        <li>
+                            <form action="/camps/<%= camp._id %>?_method=DELETE" method="POST">
+                                <button>Delete</button>
+                            </form>
+                        </li>
+                        <li><a href="/camps/<%= camp._id %>/edit">Edit</a></li>
+                    <% } %>
                 </ul>
             </div>
 
@@ -57,10 +66,12 @@
                     <label for="first-rate4" title="Very good">4 stars</label>
                     <input type="radio" id="first-rate5" name="rating" value="5" />
                     <label for="first-rate5" title="Amazing">5 stars</label>
-                  </fieldset>
+                </fieldset>
                 <textarea name="body" id="body" cols="50" rows="10"></textarea>
-                <button>Submit</button>
-            </form>
+                <% if(currentUser){ %>
+                    <button>Submit</button>
+                <% } %>
+                </form>
             
             <div class="cont-rev">
                 <h3 class="reviews">Reviews</h3>
@@ -69,9 +80,12 @@
                         <p class="starability-result" data-rating="<%= review.rating %>">
                             Rated: 3 stars
                         </p>
+                        <p>By <%= review.author.username %></p>
                         <p><%= review.body %></p>
                         <form action="/camps/<%= camp._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
-                            <button>Delete</button>
+                            <% if(currentUser && review.author.equals(currentUser._id)){ %>
+                                <button>Delete</button>
+                            <% } %>
                         </form>
                     </div>
                 <% } %>

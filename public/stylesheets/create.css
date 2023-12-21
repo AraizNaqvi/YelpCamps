@@ -206,25 +206,25 @@ body{
     font-size: 1.3rem;
     color: white;
 }
-.first main .right .right-content .special textarea{
+/* .first main .right .right-content .special input[type="text"] {
     border: 2px solid rgb(148, 148, 148);
     border-bottom-left-radius: 30px;
     outline: none;
     background-color: transparent;
     position: relative;
     right: 10px;
-    height: 170px;
+    height: 100px;
+    padding: 0px 20px;
     width: 600px;
     margin-left: 10px;
     font-size: 1.1rem;
-    padding: 10px;
     color: white;
     margin-bottom: 15px;
 }
-.first main .right .right-content .special textarea::placeholder{
+.first main .right .right-content .special input[type="text"]::placeholder{
     font-size: 1.3rem;
-    color: white;
-}
+    color: white; */
+/* } */
 .first main .right .right-content form button{
     background-color: transparent;
     color: white;

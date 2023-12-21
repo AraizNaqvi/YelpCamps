@@ -78,11 +78,15 @@ body{
 .first nav ul li a:hover:after{
     width: 100%;
 }
+.first nav .special{
+    display: flex;
+    align-items: center;
+}
 .first nav .special li i{
     color: black;
 }
 .first nav .special li a{
-    margin-left: 5px;
+    margin-left: 15px;
     font-size: 1.1rem;
     font-weight: 500;
     color: black;
@@ -100,6 +104,12 @@ body{
 }
 .first nav .special li a:hover:after{
     width: 100%;
+}
+.first nav .special .special_field{
+    font-weight: 600;
+}
+.first nav .special .special_field i{
+    margin-right: 5px;
 }
 
 .first main{

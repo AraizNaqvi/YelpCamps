@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let divs = form.querySelectorAll('.inp');
     let allFieldsFilled = true;
 
+
     inputs.forEach((input, index) => {
         input.addEventListener('input', () => {
             if (!input.value.trim()) {

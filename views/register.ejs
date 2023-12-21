@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="stylesheets/login.css">
+    <script src="https://kit.fontawesome.com/9189716859.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <section class="first">
+        <main>
+            <div class="content">
+                <div class="left">
+                    <div class="left-content">
+                        <h1>YelpCamps</h1>
+                        <p class="tag">So what's stopping your adventures?</p>
+                    </div>
+                </div>
+                <div class="right">
+                    <h1>Register</h1>
+                    <form action="/login" method="post">
+                        <div class="inp">
+                            <i class="fa-solid fa-user"></i>
+                            <input type="text" name="username" placeholder="username" required>
+                        </div>
+                        <div class="inp">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="email" name="email" placeholder="email" required>
+                        </div>
+                        <div class="inp">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" name="password" placeholder="password" required>
+                        </div>
+                        <button>Lets Go!</button>
+                        <a href="/camps">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy;2023 YelpCamps</p>
+        </footer>
+    </section>
+</body>
+</html>
