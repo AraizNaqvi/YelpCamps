@@ -131,6 +131,10 @@ body{
     border-radius: 20px;
     margin-right: 10px;
 }
+.first main ul .util .left .left-search{
+    display: flex;
+    align-items: center;
+}
 .first main ul .util .left .left-search i{
     color: white;
     font-size: 1.2rem;
@@ -149,7 +153,7 @@ body{
 .first main ul .util .left .left-search input::placeholder{
     color: rgba(255, 255, 255, 0.335);
 }
-.first main ul .util .left .left-search a{
+.first main ul .util .left .left-search button{
     background-color: transparent;
     outline: none;
     border: none;
@@ -157,8 +161,9 @@ body{
     color: white;
     font-weight: 600;
     transition: 0.5s;
+    cursor: pointer;
 }
-.first main ul .util .left .left-search a:hover{
+.first main ul .util .left .left-search button:hover{
     color: black;
 }
 .first main ul .util .right a{

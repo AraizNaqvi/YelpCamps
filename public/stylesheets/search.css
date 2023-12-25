@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,400&display=swap');
+
+*{
+    padding: none;
+    margin: none;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+*::selection{
+    background-color: white;
+    color: black;
+}
+body{
+    padding: 0;
+    margin: 0;
+}
+
+.first{
+    width: 100%;
+    min-height: 100vh;
+    background: rgb(87,87,87);
+    background: linear-gradient(184deg, rgba(87,87,87,1) 0%, rgba(136,136,136,1) 35%, rgba(240,240,240,1) 100%);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.first nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 50px;
+}
+.first nav h1 a{
+    color: white;
+    font-size: 1.8rem;
+}
+.first nav ul{
+    display: flex;
+    align-items: center;
+}
+.first nav ul li .selected{
+    margin-left: 25px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: black;
+    position: relative;
+}
+.first nav ul li .selected::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0%;
+    height: 3px;
+    background-color: black;
+    transition: 0.5s;
+}
+.first nav ul li .selected:hover:after{
+    width: 100%;
+}
+.first nav ul li a{
+    margin-left: 25px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: white;
+    position: relative;
+}
+.first nav ul li a::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0%;
+    height: 3px;
+    background-color: white;
+    transition: 0.5s;
+}
+.first nav ul li a:hover:after{
+    width: 100%;
+}
+.first nav .special{
+    display: flex;
+    align-items: center;
+}
+.first nav .special li a{
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: white;
+    transition: 0.5s;
+}
+.first nav .special li a::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0%;
+    height: 3px;
+    background-color: white;
+    transition: 0.5s;
+}
+.first nav .special li a:hover:after{
+    width: 100%;
+}
+.first nav .special .special_field{
+    font-weight: 600;
+}
+.first nav .special .special_field i{
+    margin-right: 5px;
+}
+
+.first main{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.first main ul{
+    width: 100%;
+}
+.first main ul .util{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    padding: 30px 20px;
+}
+.first main ul .util .left{
+    width: 70%;
+    padding: 5px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.551);
+    border-radius: 20px;
+    margin-right: 10px;
+}
+.first main ul .util .left .left-search{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.first main ul .util .left .left-search i{
+    color: white;
+    font-size: 1.2rem;
+}
+.first main ul .util .left .left-search input{
+    width: 850px;
+    margin-left: 10px;
+    height: 35px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+.first main ul .util .left .left-search input::placeholder{
+    color: rgba(255, 255, 255, 0.335);
+}
+.first main ul .util .left .left-search button{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: 600;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.first main ul .util .left .left-search button:hover{
+    color: black;
+}
+.first main ul .util .right a{
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    font-size: 1.3rem;
+    padding: 5px 30px;
+    font-weight: 500;
+    transition: 0.5s;
+    margin: 0px 7px;
+}
+.first main ul .util .right a:hover{
+    background-color: white;
+    color: black;
+}
+.first main ul li .content{
+    width: 80%;
+    height: 250px;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    transition: 0.5s;
+}
+.first main ul li .content:hover{
+    box-shadow: 0px 0px 20px black;
+}
+.first main ul li .content .left{
+    width: 25%;
+    height: 100%;
+    border-bottom-left-radius: 20px;
+}
+.first main ul li .content .right{
+    width: 75%;
+    height: 100%;
+    background-color: white;
+    padding-top: 40px;
+    border-top-right-radius: 20px;
+    padding-left: 50px;
+}
+.first main ul li .content .right .content-title{
+    font-size: 2rem;
+    line-height: 5px;
+}
+.first main ul li .content .right .content-para{
+    font-size: 1.3rem;
+    font-weight: 500;
+    line-height: 5px;
+}
+.first main ul li .content .right a{
+    border: 2px solid black;
+    color: black;
+    background-color: transparent;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 5px 30px;
+    position: relative;
+    top: 20px;
+    transition: 0.5s;
+}
+.first main ul li .content .right a:hover{
+    background-color: black;
+    color: white;
+}
+.first main ul li .content .left img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-bottom-left-radius: 20px;
+}
+
+.first footer{
+    width: 100%;
+    display: flex;
+    color: rgb(28, 28, 28);
+    justify-content: center;
+    font-weight: 500;
+    align-items: center;
+    margin-top: auto;
+}

@@ -27,7 +27,7 @@
         <div class="right">
           <div class="right-content">
             <h1 class="right-header">Create New Location</h1>
-            <form action="/camps" method="post">
+            <form action="/camps" method="post" enctype="multipart/form-data">
   
               <div class="inp">
                 <i class="fa-solid fa-mountain"></i>
@@ -41,8 +41,9 @@
       
               <div class="inp">
                 <i class="fa-regular fa-image"></i>
-                <input type="text" id="image" name="image" placeholder="Image">
+                <input type="file" name="image">
               </div>
+
       
               <div class="inp">
                   <i class="fa-solid fa-dollar-sign"></i>

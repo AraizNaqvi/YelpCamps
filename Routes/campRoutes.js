@@ -21,6 +21,12 @@ let validateCamp = (req, res, next) => {
 let {isLoggedIn} = require('../middleware');
 
 
+// Adding Files
+let multer = require('multer');
+let {storage} = require('../cloudinary/index');
+let upload = multer({storage});
+
+
 router.get('/' , AsyncError(async(req, res) => {
     let camps = await Campground.find({});
     res.render('camps', {camps});
@@ -28,6 +34,18 @@ router.get('/' , AsyncError(async(req, res) => {
 router.get('/new', isLoggedIn, (req, res) => {
     res.render('create');
 })
+router.get('/profile', (req, res) => {
+    res.render('profile');
+})
+router.get('/search', AsyncError(async(req, res) => {
+    const { searchQuery } = req.query;
+
+    if (!searchQuery) return res.redirect('/camps');
+    const regex = new RegExp(`^${searchQuery}`, 'i');
+    const camps = await Campground.find({ title: regex });
+
+    res.render('search', { camps, searchQuery });
+}));
 router.get('/:id', AsyncError(async(req, res) => {
     let {id} = req.params;
     let camp = await Campground.findById(id).populate({path:'reviews', populate: {path: 'author'}}).populate('author');
@@ -42,13 +60,19 @@ router.get('/:id/edit', isLoggedIn, AsyncError(async(req, res) => {
 
 
 // Post, Put, Delete Routers
-router.post('/', validateCamp, isLoggedIn, AsyncError(async(req, res) => {
+router.post('/', isLoggedIn, upload.array('image'), validateCamp, AsyncError(async(req, res) => {
     let campground = req.body;
     let camp = new Campground(campground);
+    camp.image = req.files.map(f => ({url: f.path, filename: f.filename}));
     camp.author = req.user._id;
     await camp.save();
+    console.log(camp);
     res.redirect(`/camps/${camp._id}`);
 }))
+// router.post('/', upload.single('image'), (req, res) => {
+//     console.log(req.body, req.file);
+//     res.send("HIT!");
+// })
 router.put('/:id', validateCamp, isLoggedIn, AsyncError(async(req, res) => {
     let {id} = req.params;
     let camp_body = req.body;

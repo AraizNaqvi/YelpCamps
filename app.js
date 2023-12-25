@@ -1,23 +1,13 @@
+if(process.env.NODE_ENV !== "production"){
+    require('dotenv').config();
+}
+
 // Basic Requirements
 let express = require('express');
 let app = express();
 let path = require('path');
 let Campground = require('./models/campground');
 let method_override = require('method-override');
-
-
-// Error Handling
-let AsyncError = require('./utils/AsyncError');
-let ExpressError = require('./utils/ExpressError');
-let {campgroundSchema} = require('./validations');
-let validateCamp = (req, res, next) => {
-    let {error} = campgroundSchema.validate(req.body);
-    if(error){
-        let msg = error.details.map(el => el.message).join(',')
-        throw new ExpressError(msg, 400);
-    }
-    else next();
-}
 
 
 // Database Requirements
@@ -65,13 +55,6 @@ passport.use(new localStratergy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// app.get('/fakeUser', async(req, res) => {
-//     let user = new User({email: "araiz@gmail.com", username: 'Araiz'});
-//     let newUser = await User.register(user, 'hehehe')
-//     res.send(newUser);
-// })
-
-
 
 // Route Management
 let camps = require('./Routes/campRoutes');
@@ -88,6 +71,9 @@ app.use('/camps/:id/reviews', reviews);
 app.use('/camps', camps);
 app.get('/home', (req, res) => {
     res.render('home');
+})
+app.get('/contact', (req, res) => {
+    res.render('contact');
 })
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page Not Found', 404));

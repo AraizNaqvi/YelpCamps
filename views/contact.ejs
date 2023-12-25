@@ -1,0 +1,98 @@
+<link rel="stylesheet" href="stylesheets/home.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boiler</title>
+    <link rel="stylesheet" href="stylesheets/contact.css">
+    <script src="https://kit.fontawesome.com/9189716859.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<section class="first">
+    <nav>
+        <h1><a href="/camps">YelpCamps</a></h1>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/camps">Campgrounds</a></li>
+            <li><a href="/contact" class="selected">Contact</a></li>
+        </ul>
+        <ul class="special">
+            <% if(!currentUser){ %>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+            <% }else{ %>
+                <li><a href="/profile" class="special_field"><i class="fa-solid fa-user"></i><%= currentUser.username %></a></li>
+                <li><a href="/logout">Logout</a></li>
+            <% } %>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="container">
+            <h1>YelpCamps</h1>
+        </div>
+    </main>
+</section>
+<section class="second">
+    <div class="second-content">
+        <div class="left">
+            <div class="left-content">
+                <h1 class="logo">YelpCamps</h1>
+                <h1 class="contactus">Contact Us</h1>
+                <p class="contactparastart">
+                    We thrive on conversations and connecting with amazing individuals. Come on, join the excitement! Let's dive into a chat!
+                </p>
+                <p class="contactparaend">Feel free to reach out to us about anything related to camping – from trip suggestions to website feedback. We're here for you!</p>
+            </div>
+        </div>
+        <div class="right">
+            <div class="right-content">
+                <h1>Contact Us</h1>
+                <form action="#">
+                    <div class="inp">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" name="email" placeholder="email" required>
+                    </div>
+                    <div class="inp">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" name="query" placeholder="query" required>
+                    </div>
+                    <button>Lets Go!</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<hr>
+<section class="third">
+    <div class="third-content">
+        <div class="third-info">
+            <h1 class="third-header">Postal Address</h1>
+            <p class="third-info-para">
+                Blah Blah Blah Street, Mumbai, Maharashtra
+            </p>
+        </div>
+        <div class="third-info">
+            <h1 class="third-header">Socials</h1>
+            <ul>
+                <li><a href="#"><i class="fa-brands fa-instagram"></i> YelpCamps</a></li>
+                <li><a href="#"><i class="fa-brands fa-linkedin-in"></i> YelpCamps</a></li>
+                <li><a href="#"><i class="fa-brands fa-x-twitter"></i> YelpCamps</a></li>
+            </ul>
+        </div>
+        <div class="third-info">
+            <h1 class="third-header">Business Contact</h1>
+            <ul>
+                <li><a href="#"><i class="fa-regular fa-envelope"></i> yelpcamps@gmail.com</a></li>
+                <li><a href="#"><i class="fa-solid fa-phone"></i> 2121212121</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy;2023 YelpCamps</p>
+</footer>
+</body>
+</html>

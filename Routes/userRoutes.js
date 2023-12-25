@@ -17,6 +17,9 @@ router.get('/logout', (req, res, next) => {
         res.redirect('/camps');
     });
 });
+router.get('/profile', (req, res) => {
+    res.render('profile');
+})
 
 router.post('/register', async(req, res, next) => {
     try{

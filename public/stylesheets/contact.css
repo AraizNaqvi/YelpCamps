@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,400&display=swap');
+
+*{
+    padding: none;
+    margin: none;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+*::selection{
+    background-color: white;
+    color: black;
+}
+body{
+    padding: 0;
+    margin: 0;
+}
+
+.first{
+    min-height: 60vh;
+    width: 100%;
+    background-image: url(../images/contactbg.webp);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.first nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 50px;
+}
+.first nav h1 a{
+    color: white;
+    font-size: 1.8rem;
+}
+.first nav ul{
+    display: flex;
+    align-items: center;
+}
+.first nav ul li .selected{
+    margin-left: 25px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: white;
+    position: relative;
+}
+.first nav ul li .selected::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0%;
+    height: 3px;
+    background-color: white;
+    transition: 0.5s;
+}
+.first nav ul li .selected:hover:after{
+    width: 100%;
+}
+.first nav ul li a{
+    margin-left: 25px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: black;
+    position: relative;
+}
+.first nav ul li a::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0%;
+    height: 3px;
+    background-color: black;
+    transition: 0.5s;
+}
+.first nav ul li a:hover:after{
+    width: 100%;
+}
+.first nav .special{
+    display: flex;
+    align-items: center;
+}
+.first nav .special li i{
+    color: white;
+}
+.first nav .special li a{
+    margin-left: 15px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: white;
+    transition: 0.5s;
+}
+.first nav .special li a::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0%;
+    height: 3px;
+    background-color: white;
+    transition: 0.5s;
+}
+.first nav .special li a:hover:after{
+    width: 100%;
+}
+.first nav .special .special_field{
+    font-weight: 600;
+}
+.first nav .special .special_field i{
+    margin-right: 5px;
+}
+
+.first main{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.first main .container{
+    width: 40%;
+    margin: auto;
+    line-height: 30px;
+}
+.first main .container h1{
+    color: white;
+    font-size: 4rem;
+    position: relative;
+    top: 20px;
+}
+.first main .container .desc{
+    color: white;
+    font-size: 2rem;
+    font-weight: 600;
+}
+.first main .container a{
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    font-size: 1.3rem;
+    padding: 5px 30px;
+    font-weight: 500;
+    transition: 0.5s;
+}
+.first main .container a:hover{
+    background-color: white;
+    color: black;
+}
+
+.second{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.second .second-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+    width: 80%;
+}
+.second .left{
+    width: 50%;
+    line-height: 0px;
+}
+.second .left .left-content{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: left;
+    height: 100%;
+    padding: 20px;
+    line-height: 0px;
+}
+.second .left .left-content .logo{
+    font-size: 4rem;
+    color: black;
+    font-weight: 600;
+}
+.second .left .left-content .contactus{
+    font-size: 2.3rem;
+    font-weight: 500;
+}
+.second .left .left-content .contactparastart{
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 25px;
+    position: relative;
+    width: 80%;
+    top: 10px;
+}
+.second .left .left-content .contactparaend{
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 25px;
+    width: 80%;
+    position: relative;
+    bottom: 10px;
+}
+.second .right{
+    width: 50%;
+}
+.second .right .right-content{
+    height: 100%;
+    padding: 100px;
+}
+.second .right .right-content h1{
+    color: black;
+    font-size: 3rem;
+}
+.second .right .right-content form .inp{
+    border-bottom: 2px solid grey;
+    margin-bottom: 20px;
+}
+.second .right .right-content form i{
+    margin-right: 5px;
+    font-size: 1.2rem;
+}
+.second .right .right-content form input{
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+}
+.second .right .right-content form button{
+    background-color: transparent;
+    color: black;
+    border: 1px solid black;
+    font-size: 1.3rem;
+    padding: 5px 30px;
+    font-weight: 500;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.second .right .right-content form button:hover{
+    background-color: black;
+    color: white;
+}
+.second .right .right-content form a{
+    background-color: transparent;
+    color: black;
+    border: 1px solid black;
+    font-size: 1.3rem;
+    padding: 5px 30px;
+    font-weight: 500;
+    transition: 0.5s;
+    cursor: pointer;
+    margin-left: 40px;
+}
+.second .right .right-content form a:hover{
+    background-color: black;
+    color: white;
+}
+hr{
+    background-color: rgba(0, 0, 0, 0.34);
+    width: 80%;
+    height: 3px;
+    color: black;
+    position: relative;
+    bottom: 20px;
+}
+.third{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.third .third-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: fit-content;
+    width: 70%;
+    margin: auto;
+}
+.third .third-content .third-info{
+    height: 200px;
+    width: 400px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px black;
+}
+.third .third-content .third-info .third-header{
+    color: black;
+    text-align: center;
+}
+.third .third-content .third-info .third-info-para{
+    color: black;
+    text-align: center;
+    font-size: 1.2rem;
+}
+.third .third-content .third-info ul li{
+    margin-bottom: 5px;
+}
+.third .third-content .third-info ul li a{
+    color: black;
+    font-weight: 500;
+    font-size: 1.2rem;
+    transition: 0.5s;
+}
+.third .third-content .third-info ul li a:hover{
+    font-weight: 600;
+}
+
+footer{
+    width: 100%;
+    display: flex;
+    color: black;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}

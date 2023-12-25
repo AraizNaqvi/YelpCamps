@@ -2,7 +2,10 @@ let mongoose = require('mongoose');
 let campgroundSchema = new mongoose.Schema({
     title: String,
     price: Number,
-    image: String,
+    image: [{
+        url: String,
+        filename: String
+    }],
     description: String,
     location: String,
     author: {
